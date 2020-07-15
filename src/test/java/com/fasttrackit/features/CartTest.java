@@ -19,6 +19,7 @@ public class CartTest {
 
     String email = "aadriaan2@yahoo.com";
     String pass = "123456789";
+    int qty = 1;
 
     @Steps
     private LoginSteps loginSteps;
@@ -29,6 +30,11 @@ public class CartTest {
     @Test
     public void addToCartTest(){
         cartSteps.addToCart(email, pass);
+    }
+
+    @Test
+    public void removeFromCartTest(){
+        cartSteps.removeFromCart( 1);
     }
 
 }

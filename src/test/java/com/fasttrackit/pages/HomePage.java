@@ -9,6 +9,13 @@ import org.openqa.selenium.interactions.Actions;
 @DefaultUrl("http://testfasttrackit.info/selenium-test/")
 public class HomePage extends PageObject {
 
+    @FindBy(css = ".logo")
+    private WebElementFacade toHomePage;
+
+    public void navigateToHomePage(){
+        clickOn(toHomePage);
+    }
+
     @FindBy(css = ".skip-account .label")
     private WebElementFacade accountLink;
 
@@ -30,11 +37,11 @@ public class HomePage extends PageObject {
         clickOn(logoutLink);
     }
 
-    @FindBy(css = ".product-name a[title='Linen Blazer']")
-    private WebElementFacade linenBlazerPrdct;
+    @FindBy(css = ".item  .product-info a[title='Chelsea Tee']")
+    private WebElementFacade chelseaTeePrdct;
 
-    public void clickLinenBlazerPrdct(){
-        clickOn(linenBlazerPrdct);
+    public void clickChelseaTeePrdct(){
+        clickOn(chelseaTeePrdct);
     }
 
     public void hoverOver(){

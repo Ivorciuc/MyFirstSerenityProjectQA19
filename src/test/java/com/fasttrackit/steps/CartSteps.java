@@ -18,12 +18,28 @@ public class CartSteps extends LoginSteps{
     @Step
     public void addToCart(String email, String pass){
         login(email, pass);
-        homePage.clickLinenBlazerPrdct();
-        productPage.setPrdctColor();
-        productPage.setPrdctSize();
+        homePage.open();
+        homePage.clickChelseaTeePrdct();
+        productPage.setPrdctColorBlack();
+        productPage.setPrdctSizeSS();
         productPage.clickAddToCart();
-        Assert.assertTrue(productPage.checkSuccessMsgLinenBlazer());
-
+        Assert.assertTrue(cartPage.checkSuccessMsgChelseaTee());
     }
+
+    @Step
+    public void removeFromCart(int qty){
+        homePage.open();
+        homePage.clickChelseaTeePrdct();
+        productPage.setPrdctColorBlack();
+        productPage.setPrdctSizeSS();
+        productPage.setPrdctQuantity(qty);
+        productPage.clickAddToCart();
+        Assert.assertTrue(cartPage.checkSuccessMsgChelseaTee());
+        cartPage.clickRemoveFromCart();
+        Assert.assertTrue(cartPage.checkEmptyCartMsg());
+    }
+
+
+
 
 }
