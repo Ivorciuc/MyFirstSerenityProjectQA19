@@ -6,8 +6,9 @@ import com.fasttrackit.pages.MyDashboardPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
+import org.yecht.Data;
 
-public class MyDashboardSteps extends LoginSteps{
+public class MyDashboardSteps{
 
     private HomePage homePage;
     private LoginPage loginPage;
@@ -16,28 +17,41 @@ public class MyDashboardSteps extends LoginSteps{
 
 
     @Step
-    public void changePass(String userName, String email, String pass, String newPass){
-        login(email, newPass);
-        verifyLoggedIn(userName);
+    public void changePass(String pass, String newPass) {
         myDashboardPage.setAccountInformationLink();
-        myDashboardPage.setCurrentPass(newPass);
-        myDashboardPage.setChangePassButton();
-        myDashboardPage.setNewPass(pass);
-        myDashboardPage.setConfirmNewPass(pass);
-        myDashboardPage.setConfirmNewPassButton();
-        logOut();
-        login(email, pass);
-        verifyLoggedIn(userName);
-        myDashboardPage.setAccountInformationLink();
+        myDashboardPage.isOnEditAccount();
         myDashboardPage.setCurrentPass(pass);
         myDashboardPage.setChangePassButton();
         myDashboardPage.setNewPass(newPass);
         myDashboardPage.setConfirmNewPass(newPass);
         myDashboardPage.setConfirmNewPassButton();
-        logOut();
-        login(email, newPass);
-
+        myDashboardPage.setPassChangedMsg();
 
     }
 
+    @Step
+    public void changePassBackAsItWas(String pass, String newPass){
+            myDashboardPage.setAccountInformationLink();
+            myDashboardPage.isOnEditAccount();
+            myDashboardPage.setCurrentPass(newPass);
+            myDashboardPage.setChangePassButton();
+            myDashboardPage.setNewPass(pass);
+            myDashboardPage.setConfirmNewPass(pass);
+            myDashboardPage.setConfirmNewPassButton();
+            myDashboardPage.setPassChangedMsg();
+        }
+
+    @Step
+    public void checkMyOrders(String text){
+        myDashboardPage.openMyOrders();
+        myDashboardPage.checkLastOrder();
+        myDashboardPage.checkOrderPrdctName(text);
+    }
+
+    @Step
+    public void checkMyWishlist(String text){
+        myDashboardPage.checkMyWishList(text);
+    }
 }
+
+

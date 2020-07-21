@@ -11,33 +11,35 @@ public class ForgotPassPage extends PageObject {
     @FindBy ( css = ".fieldset h2")
     private WebElementFacade passMessage;
 
+    @FindBy ( css = "#email_address")
+    private WebElementFacade emailLink;
+
+    @FindBy ( css = ".buttons-set .button")
+    private WebElementFacade submitButton;
+
+    @FindBy ( css = ".success-msg span")
+    private WebElementFacade successMsg;
+
+    @FindBy ( css = ".back-link a")
+    private WebElementFacade backToLoginButton;
+
+
+
     public Boolean isOnForgotPassPage(){
         return passMessage.isDisplayed();
     }
-
-    @FindBy ( css = "#email_address")
-    private WebElementFacade emailLink;
 
     public void setEmailLink(String email){
         typeInto(emailLink, email);
     }
 
-    @FindBy ( css = ".buttons-set .button")
-    private WebElementFacade submitButton;
-
     public void setSubmitButton(){
         clickOn(submitButton);
     }
 
-    @FindBy ( css = ".success-msg span")
-    private WebElementFacade successMsg;
-
     public Boolean isOnSuccessMsg(){
         return successMsg.isDisplayed();
     }
-
-    @FindBy ( css = ".back-link a")
-    private WebElementFacade backToLoginButton;
 
     public void setBackToLoginButton(){
         clickOn(backToLoginButton);

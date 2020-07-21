@@ -11,6 +11,18 @@ public class LoginPage extends PageObject {
     @FindBy(id = "email")
     private WebElementFacade userEmailField;
 
+    @FindBy(id = "pass")
+    private WebElementFacade userPasswordField;
+
+    @FindBy(id = "send2")
+    private WebElementFacade loginButton;
+
+    @FindBy(css = "a[class='f-left']")
+    private WebElementFacade forgotPassLink;
+
+
+
+
     public void setUserEmailField(String email){
         typeInto(userEmailField, email);
     }
@@ -19,23 +31,13 @@ public class LoginPage extends PageObject {
         return userEmailField.isDisplayed();
     }
 
-    @FindBy(id = "pass")
-    private WebElementFacade userPasswordField;
-
     public void setUserPasswordField(String pass){
         typeInto(userPasswordField, pass);
     }
 
-    @FindBy(id = "send2")
-    private WebElementFacade loginButton;
-
     public void clickLoginButton(){
         clickOn(loginButton);
     }
-
-
-    @FindBy(css = "a[class='f-left']")
-    private WebElementFacade forgotPassLink;
 
     public void forgotPassButton(){
         clickOn(forgotPassLink);

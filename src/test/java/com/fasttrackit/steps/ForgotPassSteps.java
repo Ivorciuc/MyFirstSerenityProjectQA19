@@ -8,7 +8,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
-public class ForgotPassSteps extends LoginSteps{
+public class ForgotPassSteps {
 
     private LoginPage loginPage;
     private ForgotPassPage forgotPassPage;
@@ -19,7 +19,6 @@ public class ForgotPassSteps extends LoginSteps{
 
     @Step
     public void forgotPassStep(String email){
-        navigateToLoginPage();
         loginPage.forgotPassButton();
         Assert.assertTrue(forgotPassPage.isOnForgotPassPage());
         forgotPassPage.setEmailLink(email);
@@ -29,11 +28,9 @@ public class ForgotPassSteps extends LoginSteps{
 
     @Step
     public void fromForgotPassToLogin(){
-        navigateToLoginPage();
         loginPage.forgotPassButton();
         Assert.assertTrue(forgotPassPage.isOnForgotPassPage());
         forgotPassPage.setBackToLoginButton();
-        verifyNotLoggedIn();
     }
 
 }
